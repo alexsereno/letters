@@ -195,7 +195,7 @@ Simply ensure that every new state object (such as @Observable / @ObservableObje
 
 ## Other common pitfalls in the Preview Environment
 
-#### As stated above, a lot of times you have a view that can has a child view with a dependency in the environment. If you don't add the .previewEnvironment() to the parent view's preview, its going to crash.
+As stated above, a lot of times you have a view that can has a child view with a dependency in the environment. If you don't add the .previewEnvironment() to the parent view's preview, its going to crash.
 
 ```Swift
 struct MyViewA: View {
@@ -222,7 +222,7 @@ struct MyViewB: View {
 }
 ```
 
-#### The last common issue we'll talk about today, is previewing Views that can navigate to a view that references the environment. Just wrap the parent view in NavigationStack & attach our handy modifier.
+The last common issue we'll talk about today, is previewing Views that can navigate to a view that references the environment. Just wrap the parent view in NavigationStack & attach our handy modifier.
 
 ```Swift
 
