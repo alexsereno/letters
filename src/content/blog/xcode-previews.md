@@ -7,13 +7,13 @@ heroImage: "/blog-placeholder-1.jpg"
 
 A quick rundown on common Xcode Preview issues & their resolution
 
-# The Xcode Preview Environment & You
+### The Xcode Preview Environment & You
 
 Setup is confusing, & you're scared. Thankfully, it's not too hard to get a great preview environment up & running even for complex applications.
 
 ## An initial pitfall
 
-### SPM & Multiple Platforms?
+#### SPM & Multiple Platforms?
 
 If you get the error "when building for watchOS simulator, no library for this platform was found" or "when building f
 or visionOS simulator, no library for this platform was found" the solution is stupid, & easy. Delete any existing scheme for the platform (watchOS & visionOS in my case), creating a new scheme for the platform, and uncheck everything on the main app. It'll look like this when done correctly:
@@ -28,11 +28,11 @@ Previews run inside their own little in-memory bubble. Everything your view need
 
 Thankfully, we can simplify this dramatically by making a few smart choices when we create dependencies.
 
-### Are you using @Environment or @EnvironmentObject?
+#### Are you using @Environment or @EnvironmentObject?
 
 All of those objects need to be in our preview's environment.
 
-#### First, declare your objects with a preview singleton.
+##### First, declare your objects with a preview singleton.
 
 ```swift
 @Observable
@@ -52,7 +52,7 @@ extension ExampleObject {
 #endif
 ```
 
-#### Then, add this to the preview's environment for any view with the dependency.
+##### Then, add this to the preview's environment for any view with the dependency.
 
 ```swift
 struct MyView: View {
@@ -70,7 +70,7 @@ struct MyView: View {
 #endif
 ```
 
-### But my Preview Environment includes SwiftData, CoreData, & a lot more!
+#### But my Preview Environment includes SwiftData, CoreData, & a lot more!
 
 Declare a preview singleton for every one of them, then make a handy ViewModifier to attach to your previews.
 Every preview that could have a subview depending on an object in the environment needs this modifier, so just toss it on everything.
@@ -144,7 +144,7 @@ struct MyView: View {
 #endif
 ```
 
-### But you just threw in SwiftData & CoreData!
+#### But you just threw in SwiftData & CoreData!
 
 Not to worry, the process is basically the exact same. Make preview instances for any model you have.
 
