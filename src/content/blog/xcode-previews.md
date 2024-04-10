@@ -251,7 +251,8 @@ A small PS. For items that need to be passed to the view directly, you should kn
         @State var exampleBinding = false
 
         MyDependaView(exampleObject: exampleObject, exampleBinding: $exampleBinding)
-        .previewEnvironment()
+    }
+    .previewEnvironment()
 }
 
 ```
