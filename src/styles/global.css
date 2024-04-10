@@ -291,7 +291,7 @@ header a.nav:hover:before {
     color: transparent;
     background-repeat: no-repeat;
     background-position: center;
-    /* background-image: url(../images/ios.svg); */
+    /* background-image: url(..images/ios.svg); */
     width: 120px;
     height: 40px;
     opacity: 0.95;
