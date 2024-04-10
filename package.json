@@ -1,22 +1,23 @@
 {
-  "name": "letters",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/mdx": "^2.2.4",
-    "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.1.2",
-    "@iconify-json/mdi": "^1.1.66",
-    "astro": "^4.5.17",
-    "astro-icon": "^1.1.0",
-    "markdown-it": "^14.1.0",
-    "sanitize-html": "^2.13.0"
-  }
+    "name": "letters",
+    "type": "module",
+    "version": "0.0.1",
+    "packageManager": "pnpm@8.15.6",
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/mdx": "^2.2.4",
+        "@astrojs/rss": "^4.0.5",
+        "@astrojs/sitemap": "^3.1.2",
+        "@iconify-json/mdi": "^1.1.66",
+        "astro": "^4.5.17",
+        "astro-icon": "^1.1.0",
+        "markdown-it": "^14.1.0",
+        "sanitize-html": "^2.13.0"
+    }
 }
