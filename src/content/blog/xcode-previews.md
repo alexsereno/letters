@@ -9,7 +9,11 @@ A quick rundown on common Xcode Preview issues & their resolution
 
 ### The Xcode Preview Environment & You
 
-Setup is confusing, & you're scared. Thankfully, it's not too hard to get a great preview environment up & running even for complex applications.
+I sweat a lot of blood getting Previews working for [IronIQ](https://IronIQ.app).
+
+Are you in a similar position? Setup is confusing, & you're scared?
+
+Thankfully, it's not too hard to get a great preview environment up & running even for complex applications (SPM, multiple data stacks, etc.)
 
 ## An initial pitfall
 
