@@ -2,7 +2,7 @@
 title: "Get Xcode Previews Working"
 description: "A quick rundown on common Xcode Preview issues & resolution"
 pubDate: "Apr 10 2024"
-heroImage: "/blog-placeholder-1.jpg"
+heroImage: "/defaultHero.jpg"
 ---
 
 A quick rundown on common Xcode Preview issues & their resolution
