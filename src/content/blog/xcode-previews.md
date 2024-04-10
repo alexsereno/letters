@@ -179,9 +179,9 @@ extension SDPreviewData {
     private static func makeExampleData(container: ModelContainer) {
 
         for exampleChild in 0 ..< 3 {
-            let newChild = ExampleChild(name: "Child \(exampleChild)")
+            let newChild = ExampleChildModel(name: "Child \(exampleChild)")
             for exampleParent in 0 ..< 2 {
-                let newParent = ExampleParent(name: "Parent \(exampleParent)", child: newChild)
+                let newParent = ExampleParentModel(name: "Parent \(exampleParent)", child: newChild)
                 container.mainContext.insert(newParent)
             }
             container.mainContext.insert(newChild)
