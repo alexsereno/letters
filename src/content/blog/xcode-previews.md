@@ -102,7 +102,7 @@ struct PreviewEnvironment: ViewModifier {
 
                 // MARK: Preview ModelContext
 
-                .modelContainer(PreviewData.container)
+                .modelContainer(SDPreviewData.container)
 
                 // MARK: Preview ManagedObjectContext
 
