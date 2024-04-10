@@ -5,7 +5,7 @@ pubDate: "Apr 10 2024"
 heroImage: "/blog-placeholder-1.jpg"
 ---
 
-A quick rundown on common Xcode Preview Issues & Resolution
+A quick rundown on common Xcode Preview issues & their resolution
 
 # The Xcode Preview Environment & You
 
@@ -15,7 +15,8 @@ Setup is confusing, & you're scared. Thankfully, it's not too hard to get a grea
 
 ### SPM & Multiple Platforms?
 
-If you get the error "when building for watchOS simulator, no library for this platform was found" or "when building for visionOS simulator, no library for this platform was found" the solution is stupid, & easy. Delete any existing scheme for the platform (watchOS & visionOS in my case), creating a new scheme for the platform, and as stated uncheck everything on the main app. It'll look liek this when done correctly:
+If you get the error "when building for watchOS simulator, no library for this platform was found" or "when building f
+or visionOS simulator, no library for this platform was found" the solution is stupid, & easy. Delete any existing scheme for the platform (watchOS & visionOS in my case), creating a new scheme for the platform, and uncheck everything on the main app. It'll look like this when done correctly:
 
 ![blog placeholder](https://developer.apple.com/forums/content/attachment/95a6a077-15f2-4c89-81a0-e028d13de2aa)
 
@@ -23,7 +24,7 @@ This keeps Xcode from polluting your previews for each target - you just have to
 
 ## Setting up a good Preview Environment
 
-This is the critical step, #Previews run inside their own little in-memory bubble. Everything your view needs has to be in that bubble, and since its in-memory you don't want to load too much in (like 100K SwiftData Models), so you need to set up a lightweight previewEnvironment. This is where most people fail, since figuring out what each view (and its children) need creates a ton of complexity for larger apps.
+Previews run inside their own little in-memory bubble. Everything your view needs has to be in that bubble. Since its in-memory you don't want to load too much in, you need a lightweight sandbox to play in. This is where most people fail, since figuring out what each view (and its children) needs creates a ton of complexity for larger apps.
 
 Thankfully, we can simplify this dramatically by making a few smart choices when we create dependencies.
 
@@ -33,7 +34,7 @@ All of those objects need to be in our preview's environment.
 
 #### First, declare your objects with a preview singleton.
 
-```Swift
+```swift
 @Observable
 class ExampleObject {
     var name: String?
@@ -53,7 +54,7 @@ extension ExampleObject {
 
 #### Then, add this to the preview's environment for any view with the dependency.
 
-```Swift
+```swift
 struct MyView: View {
     @Environment(ExampleObject.self) private var exampleObject
     var body: some View {
@@ -74,7 +75,7 @@ struct MyView: View {
 Declare a preview singleton for every one of them, then make a handy ViewModifier to attach to your previews.
 Every preview that could have a subview depending on an object in the environment needs this modifier, so just toss it on everything.
 
-```Swift
+```swift
 struct PreviewEnvironment: ViewModifier {
     let localize: String
 
@@ -123,7 +124,7 @@ extension View {
 }
 ```
 
-```Swift
+```swift
 
 struct MyView: View {
     @Environment(\.modelContext) private var modelContext
@@ -147,7 +148,7 @@ struct MyView: View {
 
 Not to worry, the process is basically the exact same. Make preview instances for any model you have.
 
-```Swift
+```swift
 @MainActor
 enum SDPreviewData {
     static let container: ModelContainer = {
@@ -197,7 +198,7 @@ Simply ensure that every new state object (such as @Observable / @ObservableObje
 
 As stated above, a lot of times you have a view that can has a child view with a dependency in the environment. If you don't add the .previewEnvironment() to the parent view's preview, its going to crash.
 
-```Swift
+```swift
 struct MyViewA: View {
     var body: some View {
         Text("Hello, World!")
@@ -224,7 +225,7 @@ struct MyViewB: View {
 
 The last common issue we'll talk about today, is previewing Views that can navigate to a view that references the environment. Just wrap the parent view in NavigationStack & attach our handy modifier.
 
-```Swift
+```swift
 
 #Preview {
     NavigationStack {
@@ -236,6 +237,19 @@ The last common issue we'll talk about today, is previewing Views that can navig
 ```
 
 A small PS. For items that need to be passed to the view directly, you should know to just create example @State's or whatever inside the #Preview {}.
+
+```swift
+
+#Preview {
+    NavigationStack {
+        @State var exampleObject = ExampleObject.preview
+        @State var exampleBinding = false
+
+        MyDependaView(exampleObject: exampleObject, exampleBinding: $exampleBinding)
+        .previewEnvironment()
+}
+
+```
 
 ## The End
 
