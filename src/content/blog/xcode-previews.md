@@ -197,7 +197,7 @@ extension SDPreviewData {
 
 For CoreData, Apple's boilerplate code includes a preview example you can reference, and our example .previewEnvironment has added the MOC.
 
-Simply ensure that every new state object (such as @Observable / @ObservableObject) you create has a preview singleton in an extension, then add it to our PreviewEnvironment modifier. Every subview gets updated by the modifier, & you're good to go!
+Simply ensure that every new state object (such as @Observable / @ObservableObject) you create has a preview singleton in an extension, then add it to our PreviewEnvironment modifier. Every view with the modifier attached gets a correct environment!
 
 ## Other common pitfalls in the Preview Environment
 
