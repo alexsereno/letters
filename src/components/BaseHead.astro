@@ -35,6 +35,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
             href="favicon_io/favicon-16x16.png"
         />
         <link rel="manifest" href="favicon_io/site.webmanifest" />
+
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
@@ -62,3 +63,10 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<link
+    rel="alternate"
+    type="application/rss+xml"
+    title="Alexander Sereno - Letters"
+    href={`${Astro.site}rss.xml`}
+/>

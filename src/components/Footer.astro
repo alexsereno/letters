@@ -1,10 +1,21 @@
 ---
 const today = new Date();
+import { Icon } from 'astro-icon/components'
+
+
 ---
 
 <footer class = "main copyright">
+	<div>					                <hr />
+</div>
+		<div>
+			
+					<a href="/rss.xml">Subscribe via RSS  
+						<Icon name="mdi:rss" />
+
+					</a>
+				</div>
 	<div>
-					                <hr />
 
 	                <a href="https://asereno.com/license.md">&copy; Copyright Alexander Sereno {today.getFullYear()}
 					</a>
