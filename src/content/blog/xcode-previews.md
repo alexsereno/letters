@@ -19,8 +19,7 @@ Thankfully, it's not too hard to get a great preview environment up & running ev
 
 #### SPM & Multiple Platforms?
 
-If you get the error "when building for watchOS simulator, no library for this platform was found" or "when building f
-or visionOS simulator, no library for this platform was found" the solution is stupid, & easy. Delete any existing scheme for the platform (watchOS & visionOS in my case), creating a new scheme for the platform, and uncheck everything on the main app. It'll look like this when done correctly:
+If you get the error "when building for watchOS simulator, no library for this platform was found" or "when building for visionOS simulator, no library for this platform was found" the solution is stupid, & easy. Delete any existing scheme for the platform (watchOS & visionOS in my case), creating a new scheme for the platform, and uncheck everything on the main app. It'll look like this when done correctly:
 
 ![xcode schemes](https://developer.apple.com/forums/content/attachment/95a6a077-15f2-4c89-81a0-e028d13de2aa)
 
@@ -206,8 +205,10 @@ As stated above, a lot of times you have a view that can has a child view with a
 ```swift
 struct MyViewA: View {
     var body: some View {
-        Text("Hello, World!")
-        MyViewB()
+        VStack {
+            Text("Hello, World!")
+            MyViewB()
+        }
     }
 }
 
