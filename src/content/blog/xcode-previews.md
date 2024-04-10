@@ -176,7 +176,7 @@ enum SDPreviewData {
 
 
 extension SDPreviewData {
-    /// Generates example routines & exercises
+    /// Generates examples
     private static func makeExampleData(container: ModelContainer) {
 
         for exampleChild in 0 ..< 3 {
