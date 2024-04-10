@@ -87,6 +87,7 @@ struct PreviewEnvironment: ViewModifier {
         content
         #if targetEnvironment(simulator)
             // MARK: - iOS
+        .environment(\.locale, .init(identifier: localize))
 
             #if os(iOS)
 
