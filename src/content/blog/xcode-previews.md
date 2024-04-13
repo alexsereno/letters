@@ -200,7 +200,7 @@ Simply ensure that every new state object (such as @Observable / @ObservableObje
 
 ## Other common pitfalls in the Preview Environment
 
-As stated above, a lot of times you have a view that can has a child view with a dependency in the environment. If you don't add the .previewEnvironment() to the parent view's preview, its going to crash.
+As stated above, a lot of times you have a view that has a child view with a dependency in the environment. If you don't add the .previewEnvironment() to the parent view's preview, its going to crash.
 
 ```swift
 struct MyViewA: View {
