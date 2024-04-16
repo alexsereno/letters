@@ -57,6 +57,18 @@ const { title, description, image = 'images/defaultHero.jpg' } = Astro.props;
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
 
+<!-- TelemetryDeck tag (private analytics) -->
+<script
+    src="https://cdn.telemetrydeck.com/websdk/telemetrydeck.min.js"
+    data-app-id="2A505F49-D7A8-4A34-A609-166D6D5DB05A">
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-QGVLZ8529Y">
+</script>
+
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
